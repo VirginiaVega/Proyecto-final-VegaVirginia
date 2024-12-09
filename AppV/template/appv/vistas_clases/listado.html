@@ -1,0 +1,22 @@
+{% extends "appv/index.html" %}; {% load static %}
+
+{% block title %} Titulo {% endblock title %} <!--titulo propio de la clase-->
+
+{% block contenidoQueCambia %} 
+    <!-- Featured blog post-->
+    {% for entrada in object_list %}
+    <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+        <div class="card-body">
+            <div class="small text-muted">{{ entrada.fecha }}</div>
+            <h2 class="card-title">{{ entrada.titulo }}</h2>
+            <p class="card-text">{{ entrada.subtitulo }}</p>
+            <a class="btn btn-primary" href="{% url 'detail' entrada.id %}">Leer mas →</a>
+            <a class="btn btn-primary" href="{% url 'edit' entrada.id %}">Editar →</a>
+            <a class="btn btn-primary" href="{% url 'delete' entrada.id %}">Eliminar →</a>
+        </div>
+    </div> 
+    {% endfor %}
+
+
+{% endblock contenidoQueCambia %}

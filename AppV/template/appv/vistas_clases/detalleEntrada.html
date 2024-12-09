@@ -1,0 +1,37 @@
+{% extends "appv/index.html" %}
+{% load static %}
+
+{% block title %} Entrada {% endblock title %} 
+
+{% block contenidoQueCambia %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-40"> <!-- Aumentamos el tamaño de la columna -->
+                <div class="card mb-5">
+                    <!-- Imagen destacada de la entrada -->
+                    <img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." />
+
+                    <div class="card-body">
+                        <!-- Fecha de publicación -->
+                        <div class="small text-muted mb-3">{{ entrada.fecha }}</div>
+
+                        <!-- Título de la entrada -->
+                        <h1 class="card-title display-3 mb-4">{{ entrada.titulo }}</h1>  <!-- Título más grande -->
+
+                        <!-- Subtítulo de la entrada -->
+                        <h2 class="card-text fs-3 mb-4">{{ entrada.subtitulo }}</h2> <!-- Subtítulo más grande -->
+
+                        <!-- Cuerpo de la entrada -->
+                        <p class="card-text fs-4 mb-4">{{ entrada.cuerpo }}</p> <!-- Cuerpo más grande y legible -->
+
+                        <!-- Autor de la entrada -->
+                        <div class="text-muted mb-3"><strong>Autor:</strong> {{ entrada.autor }}</div>
+
+                        <!-- Botón de Volver -->
+                        <a class="btn btn-primary" href="{% url 'list' %}">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenidoQueCambia %}

@@ -1,0 +1,79 @@
+{% extends "appv/index.html" %}
+{% load static %}
+
+{% block title %} Editar entrada {% endblock title %}
+
+{% block contenidoQueCambia %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10"> <!-- Aumentamos el tamaño de la columna -->
+                <div class="card mb-5">
+                    <div class="card-header text-center">
+                        <h2>Editar Entrada</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            
+                            <!-- Título -->
+                            <div class="mb-4">
+                                <label for="id_titulo" class="form-label h5">Título</label>
+                                <input type="text" name="titulo" id="id_titulo" class="form-control" value="{{ form.titulo.value }}" />
+                                {% if form.titulo.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.titulo.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Subtítulo -->
+                            <div class="mb-4">
+                                <label for="id_subtitulo" class="form-label h5">Subtítulo</label>
+                                <textarea class="form-control" id="id_subtitulo" name="subtitulo" rows="3">{{ form.subtitulo.value }}</textarea>
+                                {% if form.subtitulo.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.subtitulo.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Cuerpo -->
+                            <div class="mb-4">
+                                <label for="id_cuerpo" class="form-label h5">Cuerpo</label>
+                                <textarea class="form-control" id="id_cuerpo" name="cuerpo" rows="6">{{ form.cuerpo.value }}</textarea>
+                                {% if form.cuerpo.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.cuerpo.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Autor -->
+                            <div class="mb-4">
+                                <label for="id_autor" class="form-label h5">Autor</label>
+                                <input type="text" name="autor" id="id_autor" class="form-control" value="{{ form.autor.value }}" />
+                                {% if form.autor.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.autor.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Botón de enviar -->
+                            <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenidoQueCambia %}

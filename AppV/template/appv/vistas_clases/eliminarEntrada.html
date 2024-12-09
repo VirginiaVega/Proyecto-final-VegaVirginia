@@ -1,0 +1,14 @@
+{% extends "appv/index.html" %}; {% load static %}
+
+{% block title %} Titulo {% endblock title %} 
+
+{% block contenidoQueCambia %}
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <p>¿Estás seguro que deseas borrar el cliente "{{ cliente.nombre }}"?</p>
+    <input type="submit" value="Borrar">
+    <!--<input type="submit" value="Volver" href="{% url 'list'%}">-->
+
+</form>
+{% endblock contenidoQueCambia %}
