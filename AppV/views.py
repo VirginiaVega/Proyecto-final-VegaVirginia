@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
 # Create your views here.
-def home(req):
-    return render(req, 'appv/index.html')
+# def home(req):
+#     return render(req, 'appv/index.html')
 
 def about(req):
     return render(req, 'appv/acercade.html')

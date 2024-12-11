@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-path('pages/', views.home, name="inicio"),
+#path('page/', views.home, name="inicio"),
 path('about/', views.about, name="about"),
 path('', views_vistas.login_request, name="login"),
 path('singup/', views.register, name='register'),
@@ -19,7 +19,7 @@ path('edit/', views.editar_perfil, name="editar"),
 
 
 urls_vista_clases=[
-    path('lista', views_vistas.EntradasListView.as_view(), name='list'),
+    path('pages', views_vistas.EntradasListView.as_view(), name='list'),
     path('detail/<int:pk>', views_vistas.EntradaDetalle.as_view(), name='detail'),
     path('edit/<int:pk>', views_vistas.EntradaEditar.as_view(), name='edit'),
     path('delete/<int:pk>', views_vistas.EntradaEliminar.as_view(), name='delete'),
