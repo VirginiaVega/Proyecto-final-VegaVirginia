@@ -3,15 +3,18 @@
 {% block title %} Iniciar sesion {% endblock title %} 
 
 {% block contenidoQueCambia %}
-<h1>Editar perfil de {{usuario.username}}</h1>
+<div class="card mb-4">
+<form action="" method="POST">
+    {% csrf_token %}
 
-    <form action="" method="POST">
-        {% csrf_token %}
+    <table class="table table-bordered table-striped custom-form-table">
+        {{ mi_form.as_table }}
+    </table>
 
-        <table>
-            {{ mi_form.as_table }}
-        </table>
-        <input type="submit" value="Actualizar">
+    <div class="card-body">
+    <input type="submit" value="Actualizar" class="btn btn-primary">
+    </div>
 
-    </form>
+</form>
+</div>
 {% endblock contenidoQueCambia %}

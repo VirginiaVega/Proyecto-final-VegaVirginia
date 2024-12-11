@@ -1,5 +1,41 @@
 {% extends "appv/index.html" %}
     {% load static %} 
     {% block contenidoQueCambia %}
-<h1>VISTA DE "sobre mi"</h1>
+
+<!-- Page header with logo and tagline-->
+<header class="py-5 bg-light border-bottom mb-4">
+        <div class="text-center my-2">
+            <h1 class="fw-bolder">Acerca de mí</h1>
+            <p class="lead mb-0">Conoce más sobre el autor de Start Blog .</p>
+        </div>
+    </div>
+</header>
+
+<!-- Page content-->
+<div class="container">
+    <div class="row justify-content-center ">
+        <div class="col-lg-20">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">¡Hola, soy Vir!</h2>
+                    <p class="card-text">
+                        Bienvenidos. Me llamo Vir, soy estudiante y desarrolladora en Python, C# y Java.
+                        He creado este espacio para compartir pensamientos, conocimientos y experiencias sobre 
+                        temas en el area de las tecnologias de la informacion, de distintos autores a quienes sigo, para que quienes recien esten comenzando en el rubro. 
+                    </p>
+                    <p class="card-text">
+                        Si tenes dudas, o un tema para publicar no dudes en ponerte en contacto conmigo. ¡Estoy siempre dispuesta a 
+                        charlar y compartir experiencias!
+                    </p>
+                    <h3 class="mt-4">Contacto</h3>
+                    <p>
+                        Podes contactarme a través de starblog@gmail.com o seguirme en mis redes sociales: 
+                        @start_blog en Instagram y X. ¡Espero tus mensajes!
+                    </p>
+                </div>
+            </div>
+        </div>                
+    </div>
+</div>
+
     {% endblock %}

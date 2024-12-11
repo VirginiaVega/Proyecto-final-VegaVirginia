@@ -3,12 +3,22 @@
 {% block title %} Titulo {% endblock title %} 
 
 {% block contenidoQueCambia %}
-<form action="" method="POST">
-    {% csrf_token %}
+<div class="card mb-4">
+    <div class="card-header">Confirmación de eliminación</div>
+    <div class="card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>¿Estás seguro que deseas eliminar la entrada <strong>{{ entrada.titulo }}</strong>?</p>
 
-    <p>¿Estás seguro que deseas borrar el cliente "{{ cliente.nombre }}"?</p>
-    <input type="submit" value="Borrar">
-    <!--<input type="submit" value="Volver" href="{% url 'list'%}">-->
+            <div class="d-flex justify-content-between">
+                <!-- Botón para confirmar la eliminación -->
+                <input type="submit" value="Eliminar" class="btn btn-primary">
 
-</form>
+                <!-- Botón para cancelar y volver sin eliminar -->
+                <a href="{% url 'list' %}" class="btn btn-primary">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock contenidoQueCambia %}

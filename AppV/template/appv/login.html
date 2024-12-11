@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block title %}Iniciar sesión{% endblock title %}
-
 {% block contenidoQueCambia %}
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -13,12 +12,11 @@
                     <h4>Iniciar sesión</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form id="login-form" action="" method="POST">
                         {% csrf_token %}
-                        
-                        <!-- Mensaje de error global (si es necesario) -->
+
                         {% if mensaje %}
-                            <div class="alert alert-danger">
+                            <div id="global-error" class="alert alert-danger">
                                 <strong>{{ mensaje }}</strong>
                             </div>
                         {% endif %}
@@ -26,7 +24,7 @@
                         <!-- Nombre de Usuario -->
                         <div class="mb-3">
                             <label for="id_username" class="form-label">Nombre de usuario</label>
-                            <input type="text" name="username" id="id_username" class="form-control" value="{{ form.username.value|default:'' }}" />
+                            <input type="text" name="username" id="id_username" class="form-control" value="{{ request.POST.username }}" />
                             {% if form.username.errors %}
                                 <div class="text-danger">
                                     {% for error in form.username.errors %}
@@ -39,7 +37,7 @@
                         <!-- Contraseña -->
                         <div class="mb-3">
                             <label for="id_password" class="form-label">Contraseña</label>
-                            <input type="password" name="password" id="id_password" class="form-control" value="{{ form.password.value|default:'' }}" />
+                            <input type="password" name="password" id="id_password" class="form-control" value="{{ request.POST.password }}" />
                             {% if form.password.errors %}
                                 <div class="text-danger">
                                     {% for error in form.password.errors %}
@@ -56,4 +54,55 @@
         </div>
     </div>
 </div>
+
+<!-- Agregue JavaScript para la validacion de los datos desde el form-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var errorMessage = document.getElementById('global-error');
+        if (errorMessage && errorMessage.innerText.includes("Datos incorrectos")) {
+            document.getElementById('id_username').value = '';
+            document.getElementById('id_password').value = '';
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            var username = document.getElementById('id_username').value;
+            var password = document.getElementById('id_password').value;
+
+            var errorMessages = document.querySelectorAll('.text-danger');
+            errorMessages.forEach(function (error) {
+                error.remove();
+            });
+
+            var valid = true;
+            if (!username) {
+                valid = false;
+                var usernameError = document.createElement('div');
+                usernameError.classList.add('text-danger');
+                usernameError.innerHTML = '<p>Este campo es requerido.</p>';
+                document.getElementById('id_username').parentElement.appendChild(usernameError);
+            }
+
+            if (!password) {
+                valid = false;
+                var passwordError = document.createElement('div');
+                passwordError.classList.add('text-danger');
+                passwordError.innerHTML = '<p>Este campo es requerido.</p>';
+                document.getElementById('id_password').parentElement.appendChild(passwordError);
+            }
+
+            if (valid) {
+                this.submit();
+            } else {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+
 {% endblock contenidoQueCambia %}
+
+
+
+
+

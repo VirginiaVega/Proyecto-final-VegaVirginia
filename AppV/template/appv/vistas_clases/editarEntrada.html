@@ -68,8 +68,19 @@
                                 {% endif %}
                             </div>
 
-                            <!-- Botón de enviar -->
+                            <!-- Botón de enviar
                             <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
+                            <a href="{% url 'list' %}" class="btn btn-primaryw-100">Volver</a> -->
+
+                            <div class="d-flex justify-content-between">
+                                <!-- Botón para guardar cambios -->
+                                <button type="submit" class="btn btn-primary w-48">Guardar cambios</button>
+                            
+                                <!-- Botón para volver -->
+                                <a href="{% url 'list' %}" class="btn btn-primary w-48">Volver</a>
+                            </div>
+
+
                         </form>
                     </div>
                 </div>

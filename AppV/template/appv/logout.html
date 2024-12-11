@@ -3,6 +3,20 @@
 {% block title %} Iniciar sesion {% endblock title %} 
 
 {% block contenidoQueCambia %}
-<h2>Cerraste sesion</h2>
-<!--ACA PEGAR UNA PLANTILLA PARA VER ALGO COMO PUBLICIDADES O ALGO ASI-->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header text-center">
+                    <h3>¡Has cerrado sesión exitosamente!</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p>Tu sesión ha sido cerrada correctamente.</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Iniciar sesión</a>
+                    <a href="{% url 'register' %}" class="btn btn-secondary">Crear cuenta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock contenidoQueCambia %}
