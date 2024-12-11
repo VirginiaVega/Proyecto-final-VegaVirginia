@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             
                             <!-- Título -->
@@ -67,6 +67,22 @@
                                     </div>
                                 {% endif %}
                             </div>
+
+
+                            <!-- AGREGUE LA Imagen -->
+                            <div class="mb-4">
+                                <label for="id_imagen" class="form-label h5">Imagen</label>
+                                <input type="file" name="imagen" id="id_imagen" class="form-control" />
+                                {% if form.imagen.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.imagen.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+
 
                             <!-- Botón de enviar -->
                             <button type="submit" class="btn btn-primary w-100">Guardar Entrada</button>

@@ -7,4 +7,4 @@ class Entrada(models.Model):
     cuerpo = models.CharField(max_length=500)
     autor = models.CharField(max_length=100)
     fecha = models.DateField(auto_now_add=True)
-    
+    imagen = models.ImageField(upload_to='entradas/', null=True, blank=True)

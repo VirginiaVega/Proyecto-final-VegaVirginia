@@ -35,7 +35,7 @@ class EntradaCrear(CreateView):
     model = Entrada
     template_name = "appv/vistas_clases/nuevaEntrada.html" 
     success_url = reverse_lazy("list")
-    fields= ["titulo", "subtitulo", "cuerpo", "autor"]
+    fields= ["titulo", "subtitulo", "cuerpo", "autor", "imagen"]
 
 class EntradasListView(LoginRequiredMixin, ListView):
     model = Entrada
@@ -49,7 +49,7 @@ class EntradaEditar(UpdateView):
     model = Entrada
     template_name = "appv/vistas_clases/editarEntrada.html" 
     success_url = reverse_lazy("list")
-    fields= ["titulo", "subtitulo", "cuerpo", "autor"]
+    fields= ["titulo", "subtitulo", "cuerpo", "autor", "imagen"]
 
 class EntradaEliminar(DeleteView):
     model = Entrada

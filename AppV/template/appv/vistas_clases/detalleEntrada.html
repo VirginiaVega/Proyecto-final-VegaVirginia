@@ -8,9 +8,14 @@
         <div class="row justify-content-center">
             <div class="col-lg-40"> <!-- Aumentamos el tamaño de la columna -->
                 <div class="card mb-5">
-                    <!-- Imagen destacada de la entrada -->
-                    <img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." />
-
+                    <!-- Imagen destacada de la entrada  src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."-->
+                    {% if entrada.imagen %}
+            <img src="{{ entrada.imagen.url }}" alt="{{ entrada.titulo }}" class="card-img-top" />   
+            
+            {% else %}
+                <header class="card-img-top header-background2"></header>
+            {% endif %}
+    
                     <div class="card-body">
                         <!-- Fecha de publicación -->
                         <div class="small text-muted mb-3">{{ entrada.fecha }}</div>

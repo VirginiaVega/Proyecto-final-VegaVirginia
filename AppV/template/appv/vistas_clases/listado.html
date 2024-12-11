@@ -6,9 +6,18 @@
     <!-- Featured blog post-->
     {% for entrada in object_list %}
     <div class="card mb-4">
+
+        
         <a href="#!">
-            <header class="card-img-top header-background2"></header>
-        </a>        
+            {% if entrada.imagen %}
+            <img src="{{ entrada.imagen.url }}" alt="{{ entrada.titulo }}" class="card-img-top" />   
+            
+            {% else %}
+                <header class="card-img-top header-background2"></header>
+            {% endif %}
+        </a>  
+
+        
         <div class="card-body">
             <div class="small text-muted">{{ entrada.fecha }}</div>
             <h2 class="card-title">{{ entrada.titulo }}</h2>
