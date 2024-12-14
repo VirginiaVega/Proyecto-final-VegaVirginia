@@ -10,17 +10,46 @@ from django.contrib.auth import logout
 def about(req):
     return render(req, 'appv/acercade.html')
 
+# def register(request):
+#     if request.method == 'POST':
+#             form = UserRegisterForm(request.POST)
+#             if form.is_valid():
+#                 username = form.cleaned_data['username']
+#                 form.save()
+#                 return render(request,"appv/index.html" , {"mensaje":"Usuario Creado :)"})
+#     else:  
+#             form = UserRegisterForm()    
+#     return render(request,"appv/registro.html" ,  {"form":form})
+
+
+
 def register(request):
     if request.method == 'POST':
-            form = UserRegisterForm(request.POST)
-            if form.is_valid():
-                username = form.cleaned_data['username']
-                form.save()
-                return render(request,"appv/index.html" , {"mensaje":"Usuario Creado :)"})
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password1']
+            is_superuser = form.cleaned_data['is_superuser']
+            
+            # Crear el usuario
+            user = form.save(commit=False)
+            user.is_superuser = is_superuser
+            user.is_staff = is_superuser  # El superusuario también debe ser 'staff'
+            user.save()
+
+            # Redirigir a una página de éxito
+            return redirect('login')
     else:
-            #form = UserCreationForm()       
-            form = UserRegisterForm()    
-    return render(request,"appv/registro.html" ,  {"form":form})
+        form = UserRegisterForm()
+
+    return render(request, "appv/registro.html", {"form": form})
+
+
+
+
+
+
 
 
 @login_required

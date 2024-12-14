@@ -10,8 +10,10 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2", 'is_superuser']#agreue is superuser
         help_text = {k: "" for k in fields}
+
+
 
 class UserEditForm(UserCreationForm):
     email = forms.EmailField(label="Ingrese su email:")
