@@ -10,8 +10,14 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2", 'is_superuser']#agreue is superuser
+        fields = ["username", "email", "password1", "password2", 'is_superuser']
         help_text = {k: "" for k in fields}
+        
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("Este nombre de usuario ya está registrado.")
+        return username
 
 
 

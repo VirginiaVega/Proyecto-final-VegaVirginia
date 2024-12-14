@@ -4,23 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
 # Create your views here.
-# def home(req):
-#     return render(req, 'appv/index.html')
-
 def about(req):
     return render(req, 'appv/acercade.html')
-
-# def register(request):
-#     if request.method == 'POST':
-#             form = UserRegisterForm(request.POST)
-#             if form.is_valid():
-#                 username = form.cleaned_data['username']
-#                 form.save()
-#                 return render(request,"appv/index.html" , {"mensaje":"Usuario Creado :)"})
-#     else:  
-#             form = UserRegisterForm()    
-#     return render(request,"appv/registro.html" ,  {"form":form})
-
 
 
 def register(request):
@@ -32,13 +17,11 @@ def register(request):
             password = form.cleaned_data['password1']
             is_superuser = form.cleaned_data['is_superuser']
             
-            # Crear el usuario
             user = form.save(commit=False)
             user.is_superuser = is_superuser
-            user.is_staff = is_superuser  # El superusuario también debe ser 'staff'
+            user.is_staff = is_superuser  
             user.save()
 
-            # Redirigir a una página de éxito
             return redirect('login')
     else:
         form = UserRegisterForm()
